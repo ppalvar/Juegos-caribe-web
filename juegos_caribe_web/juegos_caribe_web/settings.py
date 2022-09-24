@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'noticias.apps.NoticiasConfig',
     'cronograma.apps.CronogramaConfig',
     'medallero.apps.MedalleroConfig',
     'deportes.apps.DeportesConfig',
