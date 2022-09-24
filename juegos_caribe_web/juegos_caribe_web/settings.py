@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'cronograma.apps.CronogramaConfig',
+    'medallero.apps.MedalleroConfig',
     'deportes.apps.DeportesConfig',
     'galeria.apps.GaleriaConfig',
     'informaciones.apps.InformacionesConfig',
