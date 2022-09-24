@@ -8,6 +8,12 @@ class SportEventSingle(models.Model):
     
     class Meta:
         ordering = ['-start']
+    
+    def __str__(self):
+        ans = ''
+        for s in self.competitors.all():
+            ans = f'{ans} | {s}'
+        return ans
 
 class SportEventTeam(models.Model):
     start = models.DateTimeField(null=False)
@@ -16,3 +22,9 @@ class SportEventTeam(models.Model):
     
     class Meta:
         ordering = ['-start']
+
+    def __str__(self):
+        ans = ''
+        for s in self.teams.all():
+            ans = f'{ans} | {s}'
+        return ans

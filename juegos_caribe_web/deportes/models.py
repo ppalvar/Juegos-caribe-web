@@ -42,6 +42,6 @@ class Team(models.Model):
 
     def __str__(self):
         if self.name != 'Sin Nombre':
-            return f'Nombre: {self.name}/nFacultad: {self.faculty}/nDeporte: {self.sport}'
-        return f'Facultad: {self.faculty}/nDeporte: {self.sport}'
+            return f'N: {self.name}/nF: {self.faculty}/nD: {self.sport}'
+        return f'F: {self.faculty}/nD: {self.sport}'
 
