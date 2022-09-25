@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+{% block content %}
+    <link rel="stylesheet" href="{% static 'galeria/css/labs.css' %}">
+    <link rel="stylesheet" href="{% static 'galeria/css/masonry.css' %}">
+    
+    <div class="wrapper mt-2">
+        <div class="masonry gutterless">
+            {% for image in images %}
+                <div class="brick">
+                    <img src="{{image.image.url}}" alt="{{image.alt}}" title="{{image.description}}">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
