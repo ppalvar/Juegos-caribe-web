@@ -55,7 +55,7 @@
                   <div class="col-md-6">
                      <div class="full">
                         <div class="logo">
-                           <a href="index.html"><img src="{% static 'images/logo.png' %}" alt="#" /></a>
+                           <a href="/"><img src="{% static 'images/logo.png' %}" alt="#" style="width: 170px; height: 60px; object-fit: cover;"/></a>
                         </div>
                      </div>
                   </div>
@@ -87,7 +87,6 @@
                                        <li><a href="team.html">Galeria</a></li>
                                        <li><a href="team.html">Ranking</a></li>
                                        <li><a href="about.html">Reglamento</a></li>
-                                       <!-- <li><a href="contact.html">Sobre Nosotros</a></li> -->
                                     </ul>
                                  </div>
                                  <!-- /.nav-collapse -->
@@ -116,7 +115,7 @@
       </div>
       <div class="inner-information-text">
          <div class="container">
-            <h3>Our Team</h3>
+            <h3>{% block page_name %}{% endblock page_name %}</h3>
          </div>
       </div>
    </section>
@@ -132,7 +131,7 @@
                <div class="full">
                   <div class="footer-widget">
                      <div class="footer-logo">
-                        <a href="#"><img src="{% static 'images/footer-logo.png' %}" alt="#" /></a>
+                        <a href="/"><img src="{% static 'images/footer-logo.png' %}" alt="#" style="width: 150px; height: 50px; object-fit: cover;"/></a>
                      </div>
                      <p>Most of our events have hard and easy route choices as we are always keen to encourage new
                         riders.</p>
@@ -140,7 +139,7 @@
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a class="pinterest" href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a class="github" href="https://github.com/ppalvar/Juegos-caribe-web"><i class="fa fa-github-alt"></i></a></li>
                      </ul>
                   </div>
                </div>
