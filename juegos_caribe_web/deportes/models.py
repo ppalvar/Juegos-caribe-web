@@ -11,6 +11,17 @@ class Faculty(models.Model):
 class Sport(models.Model):
     COMPETITOR_TYPE_CHOICES = (('team', 'Equipo'), ('single', 'Individual'))
     COMPETITION_TYPE_CHOICES = (('rounds', 'Eliminatoria'), ('score', 'Puntuacion'))
+    DEPORT_TYPE_CHOICES = (
+        ('atletismo', 'atletismo'), 
+        ('badminton', 'badminton'), 
+        ('ajedrez', 'ajedrez'),
+        ('tenis', 'tenis'),
+        ('balonmano', 'balonmano'),
+        ('basketball', 'basketball'),
+        ('baseball', 'baseball'),
+        ('biatlex', 'biatlex'),
+        ('', '')
+    )
 
     name = models.CharField(max_length=50, null=False)
     competitor_type = models.CharField(max_length=15, choices=COMPETITOR_TYPE_CHOICES, default='team')
