@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}MEDALLERO{% endblock page_name %}
+{% block content %}
+
+<content class="p-auto text-center">
+    <table class="table text-center">
+        <tr>
+            <th class="text-center">Posición</th>
+            <th class="text-center">Facultad</th>
+            <th class="text-center">🥉</th>
+            <th class="text-center">🥈</th>
+            <th class="text-center">🥇</th>
+            <th class="text-center">Total de puntos</th> 
+        </tr>
+    
+        {% for result in results %}
+        <tr>
+            <td class="text-center">{{result.pos}}</td>
+            <td class="text-center">{{result.name}}</td>
+            <td class="text-center">{{result.oro}}</td>
+            <td class="text-center">{{result.plata}}</td>
+            <td class="text-center">{{result.bronce}}</td>
+            <td class="text-center">{{result.points}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</content>
+
+{{ post.body|linebreaks }}
+{% endblock %}

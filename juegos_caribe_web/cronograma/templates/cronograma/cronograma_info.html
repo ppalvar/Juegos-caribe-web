@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}CRONOGRAMA-{{ date }}{% endblock page_name %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'cronograma/css/cronogram.css' %}">
+
+<h1>Competencia de {{ sport.name.capitalize }}</h1>
+<b><i>{{ date }}</i></b>
+<aside id="sidebar" class="left-bar">
+    <div class="feature-matchs">
+    <div class="team-btw-match">
+        <ul>
+            <li>Logo</li>
+            <li>Facultad</li>
+            <li>Nombre</li>
+        </ul>
+
+        {% for competitor in competitors %}
+        <ul>
+            <li>
+                <img src="{{images.0.image.url}}" alt="">
+            </li>
+            <li>
+                <span>{{ competitor.faculty }}</span>
+            </li>
+            <li>
+                <span>{{ competitor.name }}</span>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+    </div>
+</aside>
+
+{{ post.body|linebreaks }}
+{% endblock %}
