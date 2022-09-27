@@ -55,7 +55,8 @@
                   <div class="col-md-6">
                      <div class="full">
                         <div class="logo">
-                           <a href="/"><img src="{% static 'images/logo.png' %}" alt="#" style="width: 170px; height: 60px; object-fit: cover;"/></a>
+                           <a href="/"><img src="{% static 'images/logo.png' %}" alt="#"
+                                 style="width: 170px; height: 60px; object-fit: cover;" /></a>
                         </div>
                      </div>
                   </div>
@@ -93,12 +94,14 @@
                               </nav>
                               <div class="search-bar">
                                  <div id="imaginary_container">
-                                    <div class="input-group stylish-input-group">
-                                       <input type="text" class="form-control" placeholder="Search">
+                                    <form method="post" class="input-group stylish-input-group">
+                                       {% csrf_token %}
+                                       <input type="text" class="form-control" placeholder="Buscar noticias"
+                                          name="query">
                                        <span class="input-group-addon">
                                           <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                        </span>
-                                    </div>
+                                    </form>
                                  </div>
                               </div>
                            </div>
@@ -120,8 +123,19 @@
       </div>
    </section>
    <section id="page-content" class="container-fluid">
+      <section id="contant" class="contant main-heading team">
+         <div class="row">
+            <div class="container">
+               <div class="col-md-1"></div>
+               <div class="col-md-10">
 
-   {% block content %}{% endblock content %}
+                  {% block content %}{% endblock content %}
+               </div>
+               <div class="col-md-1"></div>
+            </div>
+         </div>
+      </section>
+
 
    </section>
    <footer id="footer" class="footer">
@@ -131,7 +145,8 @@
                <div class="full">
                   <div class="footer-widget">
                      <div class="footer-logo">
-                        <a href="/"><img src="{% static 'images/footer-logo.png' %}" alt="#" style="width: 150px; height: 50px; object-fit: cover;"/></a>
+                        <a href="/"><img src="{% static 'images/footer-logo.png' %}" alt="#"
+                              style="width: 150px; height: 50px; object-fit: cover;" /></a>
                      </div>
                      <p>Most of our events have hard and easy route choices as we are always keen to encourage new
                         riders.</p>
@@ -139,7 +154,8 @@
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a class="youtube" href="#"><i class="fa fa-youtube-play"></i></a></li>
-                        <li><a class="github" href="https://github.com/ppalvar/Juegos-caribe-web"><i class="fa fa-github-alt"></i></a></li>
+                        <li><a class="github" href="https://github.com/ppalvar/Juegos-caribe-web"><i
+                                 class="fa fa-github-alt"></i></a></li>
                      </ul>
                   </div>
                </div>
