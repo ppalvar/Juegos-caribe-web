@@ -5,6 +5,7 @@ class SportEventSingle(models.Model):
     start = models.DateTimeField(null=False)
     sport = models.ForeignKey(to=Sport, on_delete=models.CASCADE)
     competitors = models.ManyToManyField(to=Competitor)
+    location = models.CharField(max_length=50)
     
     class Meta:
         ordering = ['-start']
@@ -19,6 +20,7 @@ class SportEventTeam(models.Model):
     start = models.DateTimeField(null=False)
     sport = models.ForeignKey(to=Sport, on_delete=models.CASCADE)
     teams = models.ManyToManyField(to=Team)
+    location = models.CharField(max_length=50)
     
     class Meta:
         ordering = ['-start']
