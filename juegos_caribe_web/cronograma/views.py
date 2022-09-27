@@ -51,11 +51,12 @@ def cronogram_info(request, type_event, event_id):
     
     else:
 
-        team = SportEventTeam.objects.filter(pk=event_id)
+        team = SportEventTeam.objects.get(pk=event_id)
 
         return render(request,
             'cronograma/cronograma_info.html',
             {'now_time': now_time,
+            'sport': team.sport,
             'date': team.start,
             'competitors': team.teams.all(),
             'images': images})
