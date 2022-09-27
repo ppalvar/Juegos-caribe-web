@@ -1,3 +1,5 @@
+import search_engine.loader as search_loader
+
 from django.db import models
 from django.utils.text import slugify
 from django.conf import settings
@@ -16,6 +18,10 @@ class New(models.Model):
     def __str__(self):
         return self.title
 
+    def __lt__(self, other):
+        return True
+
     def save(self, *args, **kwargs):
-        slug = slugify(self.title)
+        self.slug = slugify(self.title)
         super(New, self).save(*args, **kwargs)
+        search_loader.load_models(New, 'title', 'body')
