@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block page_name %}RESULTADOS DE LA BUSQUEDA{% endblock page_name %}
+{% block page_name %}NOTICIAS{% endblock page_name %}
 
 {% block content %}
-{% for result in results %}
+{% for new in all_news %}
 <div class="feature-post">
     <div class="feature-post small-blog">
         <div class="col-md-5">
             <div class="feature-img">
-                <img src="{{ result.image.url }}" class="img-responsive" alt="#" />
+                <img src="{{ new.image.url }}" class="img-responsive" alt="#" />
             </div>
         </div>
         <div class="col-md-9">
             <div class="feature-cont">
                 <div class="post-heading">
-                    <h3>{{result.title}}</h3>
-                    <p>{{result.body|truncatewords:50}}</p>
+                    <h3>{{new.title}}</h3>
+                    <p>{{new.body|truncatewords:50|safe}}</p>
                     <div class="full">
-                        <a class="btn" href="{% url 'noticias:noticias_detail' result.slug %}">Read More</a>
+                        <a class="btn" href="{% url 'noticias:noticias_detail' new.slug %}">Ver Más</a>
                     </div>
                 </div>
             </div>

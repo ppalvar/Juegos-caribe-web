@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_name %}NOTICIA{% endblock page_name %}
+
+{% block content %}
+<div class="feature-post">
+    <div class="feature-img">
+        <img src="{{new.image.url}}" class="img-responsive" alt="#" />
+    </div>
+    <div class="feature-cont">
+        <div class="post-people">
+            <div class="left-profile">
+                <div class="post-info">
+                    <span>
+                        <h4>por {{new.author}}</h4>
+                        <h5>{{new.published}}</h5>
+                    </span>
+                </div>
+                <span class="share"></span>
+            </div>
+        </div>
+        <div class="post-heading">
+            <h3>{{new.title}}</h3>
+            <p>{{new.body|safe}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

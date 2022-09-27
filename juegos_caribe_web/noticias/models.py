@@ -24,4 +24,6 @@ class New(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(New, self).save(*args, **kwargs)
+        settings.documents.clear()
+        settings.doc_count.clear()
         search_loader.load_models(New, 'title', 'body')
