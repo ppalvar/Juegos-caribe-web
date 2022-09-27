@@ -5,7 +5,20 @@
 {% block content %}
 
     <link rel="stylesheet" href="{% static 'cronograma/css/cronogram.css' %}">
-    
+
+  
+    <div class="form-group">
+        <label for="sel1">Filter</label>
+        <select class="form-control" id="sel1">
+            <option>Grupos</option>
+            <option>Todos</option>
+
+            {% for sport in sports_name %}
+                <option>{{ sport.capitalize }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
     <content style="padding: 15px;" class="p-1 cronogram-table container">
 
         {% for sport in sports_name %}
