@@ -82,11 +82,11 @@
                                  </div>
                                  <div class="collapse navbar-collapse js-navbar-collapse">
                                     <ul class="nav navbar-nav">
-                                       <li class="active"><a href="index.html">Inicio</a></li>
-                                       <li><a href="news.html">Eventos</a></li>
-                                       <li><a href="blog.html">Noticias</a></li>
-                                       <li><a href="team.html">Galeria</a></li>
-                                       <li><a href="team.html">Ranking</a></li>
+                                       <li><a href="{% url 'informaciones:index' %}">Inicio</a></li>
+                                       <li><a href="{% url 'cronograma:cronograma' %}">Eventos</a></li>
+                                       <li><a href="{% url 'noticias:noticias_list' %}">Noticias</a></li>
+                                       <li><a href="{% url 'galeria:galeria' %}">Galeria</a></li>
+                                       <li><a href="{% url 'medallero:medallero' %}">Ranking</a></li>
                                        <li><a href="about.html">Reglamento</a></li>
                                     </ul>
                                  </div>
@@ -126,12 +126,8 @@
       <section id="contant" class="contant main-heading team">
          <div class="row">
             <div class="container">
-               <div class="col-md-1"></div>
-               <div class="col-md-10">
-
-                  {% block content %}{% endblock content %}
-               </div>
-               <div class="col-md-1"></div>
+               {% block content %}
+               {% endblock content %}
             </div>
          </div>
       </section>
