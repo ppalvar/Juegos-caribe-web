@@ -11,7 +11,7 @@
         <div class="masonry gutterless">
             {% for image in images %}
                 <div class="brick">
-                    <img src="{{image.image.url}}" alt="{{image.alt}}" title="{{image.description}}">
+                    <a href="{{image.image.url}}"><img src="{{image.image.url}}" alt="{{image.alt}}" title="{{image.description}}"></a>
                 </div>
             {% endfor %}
         </div>

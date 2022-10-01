@@ -1,14 +1,14 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
    <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <!-- Mobile Metas -->
-   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1.0">
    <!-- Site Metas -->
    <title>Juegos Caribe</title>
    <meta name="keywords" content="">
@@ -23,9 +23,9 @@
    <!-- Site CSS -->
    <link rel="stylesheet" href="{% static 'style.css' %}">
    <!-- Colors CSS -->
-   <link rel="stylesheet" href="{% static 'css/colors.css' %}">
+   {% comment %} <link rel="stylesheet" href="{% static 'css/colors.css' %}"> {% endcomment %}
    <!-- ALL VERSION CSS -->
-   <link rel="stylesheet" href="{% static 'css/versions.css' %}">
+   {% comment %} <link rel="stylesheet" href="{% static 'css/versions.css' %}"> {% endcomment %}
    <!-- Responsive CSS -->
    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
    <!-- Custom CSS -->
@@ -36,7 +36,7 @@
       rel="stylesheet">
    <!-- end font family -->
    <link rel="stylesheet" href="{% static 'css/3dslider.css' %}" />
-   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <script src="{% static 'js/jquery.min.js' %}"></script>
    <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
    <script src="{% static 'js/3dslider.js' %}"></script>
 </head>
@@ -87,7 +87,7 @@
                                        <li><a href="{% url 'noticias:noticias_list' %}">Noticias</a></li>
                                        <li><a href="{% url 'galeria:galeria' %}">Galeria</a></li>
                                        <li><a href="{% url 'medallero:medallero' %}">Ranking</a></li>
-                                       <li><a href="about.html">Reglamento</a></li>
+                                       <li><a href="{% static 'informaciones/reglamento.pdf' %}">Reglamento</a></li>
                                     </ul>
                                  </div>
                                  <!-- /.nav-collapse -->
@@ -97,7 +97,7 @@
                                     <form method="post" class="input-group stylish-input-group">
                                        {% csrf_token %}
                                        <input type="text" class="form-control" placeholder="Buscar noticias"
-                                          name="query">
+                                          name="query" required>
                                        <span class="input-group-addon">
                                           <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                        </span>
