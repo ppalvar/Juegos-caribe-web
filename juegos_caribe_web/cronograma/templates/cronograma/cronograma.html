@@ -1,76 +1,99 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_tags %}
 
 {% block page_name %}CRONOGRAMA{% endblock page_name %}
 {% block content %}
-
-    <link rel="stylesheet" href="{% static 'cronograma/css/cronogram.css' %}">
-    
-    <content style="padding: 15px;" class="p-1 cronogram-table container">
-
+<span class="col-md-3"></span>
+<div class="container col-md-6" style="border: 1px solid lightgrey;border-radius: 5px;padding: 2em;margin: 0 0 2em 0;">
+    <h2 class="text-center">Filtrar <span class="fa fa-filter"></span></h2>
+    <select name="sports" id="sport-selection" class="form-control">
+        <option value="todos"> Todos </option>
         {% for sport in sports_name %}
-        <h2 class="text-center"><b>{{ sport.capitalize }}</b></h2>
-
-        <div aria-labelledby="headingOne">
-            <div class="card-body">
-
-                <aside id="sidebar" class="left-bar mx-1">
-                    <table class="table">
-                        <tr>
-                            <th>
-                                <b>Fecha</b>
-                            </th>
-                            <th>
-                                <b>Ubicación</b>
-                            </th>
-                            <th>
-                                <b>Deporte</b>
-                            </th>
-                            <th>
-                                <b>Estado</b>
-                            </th>
-                            <th>
-
-                            </th>
-                        </tr>
-
-                        {% for type, event in events %}
-                            {% if event.sport.name == sport %}
-                                <tr>
-                                    <td>
-                                        <span>{{event.start}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{event.location}}</span>
-                                    </td>
-                                    <td>
-                                        <span>{{event.sport.name.capitalize}}</span>
-                                    </td>
-                                    <td>
-                                        {% if event.start.day > now_time.day %}
-                                            <span style="background-color: blue;" class="badge bg-primary">Futuro</span>
-                                        {% elif event.start.day == now_time.day %}
-                                            <span style="background-color: green;" class="badge bg-success">Hoy</span>
-                                        {% else %}
-                                            <span style="background-color: red;" class="badge bg-danger">Pasada</span>
-                                        {% endif %}
-                                    </td>
-                                    <th>
-                                        <a href="{% url 'cronograma:cronograma_info' type event.pk %}" class="link">Ver Info</a>
-                                    </th>
-                                </tr>
-                            {% endif %}
-                        {% endfor %}
-                    </table>
-                    <!-- </div>
-                    </div> -->
-                </aside>
-
-            </div>
-        </div>
+        <option value="{{sport}}"> {{ sport | capfirst }} </option>
         {% endfor %}
-        
-    </content>
+    </select>
+    <div style="display: flex;margin:10px auto auto auto;">
+        <label for="date-min-choice" class="col-md-3">Desde</label>
+        <input type="date" name="date-min-choice" id="date-min-choice" class="form-control col-md-3"
+            style="margin-right:5px;">
+        <label for="date-max-choice" class="col-md-3">Hasta</label>
+        <input type="date" name="date-max-choice" id="date-max-choice" class="form-control col-md-3"
+            style="margin-left:5px;">
+    </div>
+</div><span class="col-md-3"></span>
+
+
+
+<content style="padding: 15px;" class="p-1 cronogram-table container">
+
+    {% for sport in sports_name %}
+    <h2 class="text-center" name="{{sport}}"><b>{{ sport.capitalize }}</b></h2>
+
+    <div aria-labelledby="headingOne" name="{{sport}}">
+        <div class="card-body">
+
+            <aside id="sidebar" class="left-bar mx-1">
+                <table class="table">
+                    <tr>
+                        <th class="col-md-4">
+                            <b>Fecha</b>
+                        </th>
+                        <th class="col-md-2">
+                            <b>Ubicación</b>
+                        </th>
+                        <th class="col-md-2">
+                            <b>Deporte</b>
+                        </th>
+                        <th class="col-md-2">
+                            <b>Estado</b>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+
+                    {% for type, event in events %}
+                    {% if event.sport.name == sport %}
+                    <tr data-date="{{event.start.isoformat|strftime:'%Y%m%d'}}" name="event-info">
+                        <td class="col-md-4 text-left">
+                            <span>{{event.start.date}}</span>
+                        </td>
+                        <td class="col-md-2 text-left">
+                            <span>{{event.location}}</span>
+                        </td>
+                        <td class="col-md-2 text-left">
+                            <span>{{event.sport.name.capitalize}}</span>
+                        </td>
+                        <td class="col-md-2 text-left">
+                            {% if event.start > now_time %}
+                            <span style="background-color: rgb(95, 176, 209);" class="badge bg-primary">Futuro</span>
+                            {% elif event.start.date == now_time.date %}
+                            <span style="background-color: rgb(125, 243, 78);" class="badge bg-success">Hoy</span>
+                            {% else %}
+                            <span style="background-color: rgb(210, 71, 71);" class="badge bg-danger">Pasada</span>
+                            {% endif %}
+                        </td>
+                        <td class="col-md-2">
+                            <a href="{% url 'cronograma:cronograma_info' type event.pk %}" class="link text-left"
+                                style="font-weight: bold;">Ver Mas</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </table>
+                <!-- </div>
+                    </div> -->
+            </aside>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</content>
+
+<link rel="stylesheet" href="{% static 'cronograma/css/cronogram.css' %}">
+<script src="{% static 'cronograma/js/cronogram.js' %}"></script>
 
 {{ post.body|linebreaks }}
 {% endblock %}
