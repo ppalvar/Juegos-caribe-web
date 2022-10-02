@@ -5,23 +5,13 @@
 
 {% block content %}
 {% for new in all_news %}
-<div class="feature-post">
-    <div class="feature-post small-blog">
-        <div class="col-md-5">
-            <div class="feature-img">
-                <img src="{{ new.image.url }}" class="img-responsive" alt="#" />
-            </div>
-        </div>
-        <div class="col-md-9">
-            <div class="feature-cont">
-                <div class="post-heading">
-                    <h3>{{new.title}}</h3>
-                    <p>{{new.body|truncatewords:50|safe}}</p>
-                    <div class="full">
-                        <a class="btn" href="{% url 'noticias:noticias_detail' new.slug %}">Ver Más</a>
-                    </div>
-                </div>
-            </div>
+<div class="news-post-holder">
+    <div class="news-post-widget">
+        <img class="img-responsive" src="{{ new.image.url }}" alt="{{new.alt}}" style="max-height:20em;object-fit: cover;">
+        <div class="news-post-detail">
+            <span class="date">{{ new.published }}</span>
+            <h2><a href="{% url 'noticias:noticias_detail' new.slug %}">{{ new.title }}</a></h2>
+            <p>{{new.body|truncatewords:50|safe}}</p>
         </div>
     </div>
 </div>
