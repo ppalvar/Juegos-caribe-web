@@ -192,65 +192,26 @@
                         </aside>
                     </a>
 
-                    <h4>Match Fixture</h4>
+                    <h4>Próximos encuentros</h4>
                     <aside id="sidebar" class="left-bar">
                         <div class="feature-matchs">
                             <div class="team-btw-match">
+                                {% for match in next_matches %}
+                                {% if match.start.date > now.date %}
                                 <ul>
                                     <li>
-                                        <img src="{% static 'images/img-01_002.png' %}" alt="">
-                                        <span>Portugal</span>
+                                        <span>{{match.sport}}</span>
                                     </li>
-                                    <li class="vs"><span>vs</span></li>
                                     <li>
-                                        <img src="{% static 'images/img-01_002.png' %}" alt="">
-                                        <span>Germany</span>
+                                        <span>{{match.location}}</span>
                                     </li>
+                                    <li>
+                                        <span>{{match.start.date}}</span>
+                                    </li>
+                                    <!-- <li class="vs"><span>vs</span></li> -->
                                 </ul>
-                                <ul>
-                                    <li>
-                                        <img src="{% static 'images/img-03_002.png' %}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="{% static 'images/img-04_003.png' %}" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="{% static 'images/img-05_002.png' %}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="{% static 'images/img-06.png' %}" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="{% static 'images/img-07_002.png' %}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="{% static 'images/img-08.png' %}" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
-                                <ul>
-                                    <li>
-                                        <img src="{% static 'images/img-05_002.png' %}" alt="">
-                                        <span>Portugal</span>
-                                    </li>
-                                    <li class="vs"><span>vs</span></li>
-                                    <li>
-                                        <img src="{% static 'images/img-06.png' %}" alt="">
-                                        <span>Germany</span>
-                                    </li>
-                                </ul>
+                                {% endif %}
+                                {% endfor %}
                             </div>
                         </div>
                     </aside>
@@ -320,7 +281,7 @@
                     {% for new in latest_news %}
                     <div class="news-post-holder">
                         <div class="news-post-widget">
-                            <img class="img-responsive" src="{{ new.image.url }}" alt="">
+                            <img class="img-responsive" src="{{ new.image.url }}" alt="" style="max-height:20em;object-fit: cover;">
                             <div class="news-post-detail">
                                 <span class="date">{{ new.published }}</span>
                                 <h2><a href="{% url 'noticias:noticias_detail' new.slug %}">{{ new.title }}</a></h2>

@@ -15,6 +15,8 @@ class SportEventSingle(models.Model):
         for s in self.competitors.all():
             ans = f'{ans} | {s}'
         return ans
+    
+    __lt__ = lambda x, y: 1 if x.start < y.start else -1
 
 class SportEventTeam(models.Model):
     start = models.DateTimeField(null=False)
@@ -30,3 +32,5 @@ class SportEventTeam(models.Model):
         for s in self.teams.all():
             ans = f'{ans} | {s}'
         return ans
+    
+    __lt__ = lambda x, y: 1 if x.start < y.start else -1
